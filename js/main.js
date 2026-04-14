@@ -45,9 +45,6 @@ function loadSkills() {
         <div class="card" style="text-align: center;">
             <i class="fab ${skill.icon} fa-3x" style="color: var(--primary-color); margin-bottom: 1rem;"></i>
             <h3>${skill.name}</h3>
-            <div style="background: #e5e7eb; height: 10px; border-radius: 5px; margin-top: 10px; overflow: hidden;">
-                <div style="width: ${skill.level}%; background: var(--primary-color); height: 100%;"></div>
-            </div>
         </div>
     `).join('');
 }
