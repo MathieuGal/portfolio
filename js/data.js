@@ -46,7 +46,8 @@ Une interface CLI interactive permet aux utilisateurs de paramétrer facilement 
             "Génération automatique de rapports de benchmark",
             "Interface de visualisation des résultats"
         ],
-        github: "",
+        github: "https://github.com/Fondation-io",
+        private: true,
         competences: ["Développer une solution", "Gérer le patrimoine informatique"],
         codeExamples: [
             {
@@ -86,7 +87,8 @@ L'architecture facilite grandement l'intégration avec divers LLMs pour piloter 
             "Automatisation d'interactions complexes",
             "Navigation autonome"
         ],
-        github: "",
+        github: "https://github.com/Fondation-io",
+        private: true,
         competences: ["Développer une solution", "Traiter des incidents"],
         codeExamples: [
             {
@@ -194,52 +196,61 @@ Ce projet illustre de façon pratique les concepts d'architecture d'un jeu vidé
 
 export const veille = {
     sujet: "L'impact écologique de l'Intelligence Artificielle",
-    outils: ["Google Scholar", "MIT Tech Review", "Rapports ADEME", "Revues Scientifiques"],
+    outils: ["Feedly (flux RSS)", "Google Scholar", "Bon Pote", "Le Monde Informatique", "ecologie.gouv.fr", "The Conversation"],
     image: "js/Image/Pollution-numerique-IA-1024x576.jpg",
-    description: `L'intelligence artificielle connaît aujourd'hui une croissance fulgurante, portée par des modèles toujours plus complexes et performants (LLMs, génération d'images, etc.). Cette avancée offre des perspectives inédites dans la santé, l'automatisation, ou encore la recherche scientifique. Cependant, son développement soulève logiquement des questions quant à son coût écologique, qui mérite une analyse nuancée.
+    description: `L'intelligence artificielle connaît aujourd'hui une croissance fulgurante, portée par des modèles toujours plus complexes et performants (LLMs, génération d'images, agents autonomes). Cette avancée offre des perspectives inédites dans la santé, l'automatisation et la recherche scientifique. Cependant, son développement soulève des questions quant à son coût écologique, qui mérite une analyse nuancée.
 
-Il est indéniable que l'entraînement de modèles massifs nécessite des infrastructures importantes, principalement des data centers équipés de milliers de GPUs fonctionnant en continu. Cette demande en puissance de calcul se traduit par une consommation électrique substantielle. Toutefois, l'industrie prend la mesure du problème et innove. De plus en plus de data centers sont alimentés, partiellement ou totalement, par des énergies renouvelables (solaire, éolien, hydroélectrique), réduisant significativement leur empreinte carbone par rapport aux estimations basées sur le mix énergétique mondial moyen.
+L'entraînement de modèles massifs nécessite des infrastructures considérables : des data centers équipés de milliers de GPUs fonctionnant en continu. L'Agence Internationale de l'Énergie estime que la consommation électrique des data centers pourrait doubler d'ici 2026, et l'IA générative pourrait représenter plus de 50% de cette consommation. À titre d'exemple, une requête sur un LLM consomme environ 10 fois plus d'énergie qu'une recherche Google classique.
 
-Concernant la consommation d'eau, souvent pointée du doigt pour le refroidissement des serveurs, la réalité technique est également en pleine mutation. Si les systèmes de refroidissement par évaporation traditionnels consommaient beaucoup d'eau potable, de nombreux data centers modernes déploient désormais des systèmes de refroidissement en circuit fermé. Ces installations réutilisent la même eau indéfiniment, annulant presque totalement le gaspillage des ressources hydriques locales. D'autres approches, comme le "free cooling" (utilisation de l'air extérieur dans les régions froides) ou l'immersion des serveurs dans des liquides diélectriques, repoussent encore l'efficacité énergétique (PUE).
+La consommation d'eau pour le refroidissement des serveurs est également un sujet de préoccupation : Microsoft a vu son usage hydrique progresser de 34% entre 2021 et 2022, et l'entraînement de GPT-3 aurait consommé près de 700 000 litres d'eau. Toutefois, l'industrie innove avec des systèmes de refroidissement en circuit fermé, le "free cooling" (utilisation de l'air extérieur dans les régions froides), ou encore l'immersion des serveurs dans des liquides diélectriques.
 
-Par ailleurs, l'IA n'est pas qu'une source de consommation : elle s'avère être un outil puissant pour la transition écologique. Elle est massivement employée pour optimiser les réseaux électriques (smart grids), améliorer les rendements agricoles sans surconsommation d'eau, ou encore concevoir de nouveaux matériaux plus durables.
+Côté matériel, les puces spécialisées comme les TPUs de Google ont vu leur efficacité carbone tripler en quatre ans (TPU v4 → Trillium), et la dernière génération Ironwood est 30 fois plus efficace énergétiquement que la première TPU publique. Côté algorithmique, des techniques comme la quantification (INT8, BF16), le pruning ou la distillation de modèles (DistilBERT) permettent de réduire jusqu'à 50% la consommation tout en conservant 97% des performances.
 
-La question centrale n'est donc pas d'arrêter le développement de l'IA, mais de l'orienter vers la "Green AI". Cela implique un effort constant sur l'optimisation des algorithmes (des modèles plus petits et efficaces), l'amélioration de l'efficacité matérielle (puces spécialisées moins énergivores comme les TPUs), et une réflexion sur la "frugalité numérique" : s'assurer que le déploiement d'une IA pour un cas d'usage précis apporte une valeur qui justifie son coût énergétique.`,
+Par ailleurs, l'IA n'est pas qu'une source de consommation : elle est aussi un outil puissant pour la transition écologique. Elle est utilisée pour piloter les réseaux électriques intelligents (smart grids), optimiser l'agriculture de précision (irrigation, dosage des intrants), et accélérer la recherche sur les nouveaux matériaux durables. En France, la stratégie nationale en IA (SNIA) finance des "démonstrateurs d'IA frugale" dans la mobilité, le bâtiment et l'agriculture.
+
+La question centrale n'est donc pas d'arrêter le développement de l'IA, mais de l'orienter vers la "Green AI" : optimisation algorithmique, matériel spécialisé moins énergivore, énergies renouvelables, et surtout une réflexion sur la frugalité numérique — s'assurer que le déploiement d'une IA apporte une valeur qui justifie son coût énergétique.`,
     articles: [
         {
-            titre: "Évaluer la vraie consommation d'eau et d'énergie de l'IA",
-            date: "Janvier 2024",
-            source: "GreenIT",
-            resume: "Une analyse nuancée sur les innovations dans le refroidissement des data centers (circuits fermés) et l'utilisation croissante d'énergies renouvelables.",
-            lien: "#"
+            titre: "Intelligence artificielle : le vrai coût environnemental de la course à l'IA",
+            date: "2024",
+            source: "Bon Pote",
+            resume: "Analyse approfondie et chiffrée du coût environnemental réel de la course à l'IA générative : électricité, eau, matériaux, et limites des engagements des géants de la tech.",
+            lien: "https://bonpote.com/intelligence-artificielle-le-vrai-cout-environnemental-de-la-course-a-lia/"
         },
         {
-            titre: "Comment l'IA peut aider à résoudre la crise climatique",
-            date: "Décembre 2023",
-            source: "World Economic Forum",
-            resume: "Aperçu des technologies d'IA utilisées pour optimiser les réseaux électriques, la logistique et l'agriculture de précision.",
-            lien: "#"
+            titre: "La consommation d'eau liée à l'IA générative inquiète",
+            date: "Septembre 2023",
+            source: "Le Monde Informatique",
+            resume: "Enquête sur la hausse de 34% de la consommation d'eau de Microsoft entre 2021 et 2022, et sur les data centers IA déployés à Des Moines (Iowa) pour entraîner les modèles d'OpenAI.",
+            lien: "https://www.lemondeinformatique.fr/actualites/lire-la-consommation-d-eau-liee-a-l-ia-generative-inquiete-91508.html"
         },
         {
-            titre: "Efficiency and Carbon Footprint of Machine Learning",
-            date: "Novembre 2023",
-            source: "Google Research",
-            resume: "Étude interne de Google démontrant comment les puces spécialisées (TPUs) et le mix énergétique réduisent massivement les émissions liées à l'entraînement des modèles.",
-            lien: "#"
+            titre: "Pour une intelligence artificielle durable",
+            date: "2024",
+            source: "Ministère de la Transition écologique",
+            resume: "Position officielle française sur l'IA durable : démonstrateurs d'IA frugale, stratégie nationale SNIA et leviers pour réduire l'empreinte environnementale du secteur.",
+            lien: "https://www.ecologie.gouv.fr/actualites/intelligence-artificielle-durable"
         },
         {
-            titre: "Les promesses de la Green AI",
-            date: "Février 2024",
-            source: "CNRS - Le Journal",
-            resume: "Tour d'horizon des recherches visant à rendre les algorithmes d'apprentissage profond moins gourmands en calcul tout en conservant leurs performances.",
-            lien: "#"
+            titre: "TPUs improved carbon-efficiency of AI workloads by 3x",
+            date: "2024",
+            source: "Google Cloud Blog",
+            resume: "Étude de Google démontrant comment les puces TPU ont vu leur efficacité carbone tripler en quatre ans (de TPU v4 à Trillium), avec une analyse de cycle de vie complète.",
+            lien: "https://cloud.google.com/blog/topics/sustainability/tpus-improved-carbon-efficiency-of-ai-workloads-by-3x"
         },
         {
-            titre: "Vers des data centers éco-responsables",
-            date: "Octobre 2023",
-            source: "Techniques de l'Ingénieur",
-            resume: "Focus technique sur le \"Free cooling\", l'immersion des serveurs, et la récupération de chaleur fatale des data centers pour le chauffage urbain.",
-            lien: "#"
+            titre: "L'IA générative est-elle soutenable ? Le vrai coût écologique d'un prompt",
+            date: "Décembre 2025",
+            source: "The Conversation",
+            resume: "Analyse académique vulgarisée du coût écologique réel d'une simple requête envoyée à une IA générative, et des leviers techniques pour réduire ce coût.",
+            lien: "https://theconversation.com/lia-generative-est-elle-soutenable-le-vrai-cout-ecologique-dun-prompt-269432"
+        },
+        {
+            titre: "Transition écologique : 12 projets où l'IA change la donne",
+            date: "2024",
+            source: "IGN",
+            resume: "Tour d'horizon de projets concrets où l'IA contribue à la transition écologique : cartographie des forêts, suivi de la biodiversité, gestion des risques naturels, agriculture de précision.",
+            lien: "https://www.ign.fr/mag/transition-ecologique-12-projets-ou-lia-change-la-donne"
         }
     ],
     projets: [
@@ -446,7 +457,8 @@ Intégration au workflow de déploiement de l'équipe avec contrôle de version 
             "Respect de la charte graphique",
             "Workflow Git d'équipe"
         ],
-        github: "",
+        github: "https://github.com/Fondation-io",
+        private: true,
         competences: ["Développer la présence en ligne de l'organisation", "Travailler en mode projet"],
         equipe: ["Équipe Fondation.io"],
         periode: "01/09/25 au 31/10/25",
@@ -469,7 +481,8 @@ Travail en mode projet avec spécifications techniques, suivi de tickets et revu
             "Suite de tests unitaires automatisée",
             "Pipeline CI/CD intégrée"
         ],
-        github: "",
+        github: "https://github.com/Fondation-io",
+        private: true,
         competences: [
             "Gérer le patrimoine informatique",
             "Répondre aux incidents et aux demandes d'évolution",

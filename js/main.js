@@ -49,7 +49,11 @@ function loadSkills() {
 function loadProjects() {
     const projectsContainer = document.getElementById('projects-container');
     if (projectsContainer) {
-        projectsContainer.innerHTML = projects.map(project => createProjectCard(project)).join('');
+        const all = [
+            ...projects,
+            ...(typeof projetsPro !== 'undefined' ? projetsPro : [])
+        ];
+        projectsContainer.innerHTML = all.map(project => createProjectCard(project)).join('');
     }
 
     const proContainer = document.getElementById('pro-projects-container');
@@ -73,8 +77,12 @@ function loadEpreuves() {
 }
 
 function createProjectCard(project) {
-    const privateBadge = (!project.github || project.github === '')
+    const isPrivate = project.private === true;
+    const privateBadge = isPrivate
         ? `<span style="display:inline-block; background:#fff3cd; color:#856404; padding:0.25rem 0.6rem; border-radius:999px; font-size:0.8rem; border:1px solid #ffeeba; margin-bottom:0.75rem;"><i class="fas fa-lock" style="margin-right:5px;"></i>Repo privé entreprise</span>`
+        : '';
+    const githubButton = (project.github && project.github !== '')
+        ? `<a href="${project.github}" class="btn btn-primary" style="width: 100%; display: block; text-align: center; margin-bottom: 0.5rem;" target="_blank" rel="noopener"><i class="fa${isPrivate ? 's fa-lock' : 'b fa-github'}" style="margin-right: 8px;"></i>${isPrivate ? 'Repo privé — Voir sur GitHub' : 'Voir sur GitHub'}</a>`
         : '';
     return `
         <div class="card">
@@ -87,6 +95,7 @@ function createProjectCard(project) {
             <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
                 ${project.tags.map(tag => `<span style="background: var(--bg-color); color: var(--primary-color); padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.875rem; border: 1px solid var(--primary-color);">${tag}</span>`).join('')}
             </div>
+            ${githubButton}
             <a href="projet-details.html?id=${project.id}" class="btn btn-secondary" style="width: 100%; display: block; text-align: center;">Voir les détails</a>
         </div>
     `;
@@ -136,12 +145,19 @@ function loadProjectDetails() {
 
     const githubLink = document.getElementById('project-github');
     if (githubLink) {
+        const isPrivate = project.private === true;
         if (project.github && project.github !== '') {
             githubLink.href = project.github;
+            githubLink.target = '_blank';
+            githubLink.rel = 'noopener';
             githubLink.style.display = '';
             githubLink.style.cursor = '';
             githubLink.style.opacity = '';
-            githubLink.innerHTML = '<i class="fab fa-github" style="margin-right:8px;"></i> Voir sur GitHub';
+            if (isPrivate) {
+                githubLink.innerHTML = '<i class="fas fa-lock" style="margin-right:8px;"></i> Repo privé — Voir sur GitHub';
+            } else {
+                githubLink.innerHTML = '<i class="fab fa-github" style="margin-right:8px;"></i> Voir sur GitHub';
+            }
         } else {
             githubLink.removeAttribute('href');
             githubLink.style.cursor = 'not-allowed';
