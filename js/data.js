@@ -354,7 +354,7 @@ Ce projet met particulièrement l'accent sur les flux de communication multi-uti
                 "Messagerie intégrée",
                 "Tableaux de bord personnalisés"
             ],
-            github: "https://github.com/MathieuGal/Projet-sites-artisans-BTS-SIO",
+            github: "https://github.com/MathieuGal/Projet-Sites-Artisan",
             competences: ["Concevoir et développer une solution applicative", "Traiter des incidents"],
             equipe: ["Mathieu Gallienne"],
             codeExamples: [
@@ -366,7 +366,7 @@ Ce projet met particulièrement l'accent sur les flux de communication multi-uti
     $sql = "SELECT nom, entreprise FROM artisans WHERE categorie_id = :catId";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(['catId' => $category_id]);
-    
+
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }`
                 }
@@ -374,6 +374,89 @@ Ce projet met particulièrement l'accent sur les flux de communication multi-uti
         }
     ]
 };
+
+// Réalisations en milieu professionnel (alternance Fondation.io / Siccardi Tech-Leads)
+// Repos privés entreprise — pas de lien GitHub public
+export const projetsPro = [
+    {
+        id: 201,
+        title: "Fondation.io — Landing Page",
+        description: "Site vitrine de l'entreprise (intégration responsive).",
+        longDescription: `Conception et intégration de la landing page officielle de Fondation.io, vitrine de l'entreprise et premier point de contact avec les visiteurs.
+Le travail a porté sur l'intégration HTML/CSS responsive d'une maquette, en respectant les contraintes de charte graphique et d'identité visuelle.
+Optimisations sur les performances de chargement (assets compressés, lazy loading des images) et sur l'accessibilité (sémantique HTML5, contrastes).
+Intégration au workflow de déploiement de l'équipe avec contrôle de version Git et revues de code.`,
+        tags: ["HTML", "CSS", "Responsive", "Web"],
+        image: "assets/img/projets/placeholder-landing.jpg",
+        gallery: [],
+        features: [
+            "Intégration responsive multi-supports",
+            "Optimisation des performances (Lighthouse)",
+            "Respect de la charte graphique",
+            "Workflow Git d'équipe"
+        ],
+        github: "",
+        competences: ["Développer la présence en ligne de l'organisation", "Travailler en mode projet"],
+        equipe: ["Équipe Fondation.io"],
+        periode: "01/09/25 au 31/10/25",
+        codeExamples: []
+    },
+    {
+        id: 202,
+        title: "Fondation.io — fast-db-batch-search-client",
+        description: "Client TypeScript pour API de recherche batch (fuzzy, jointures, CI/CD).",
+        longDescription: `Conception et développement d'un client TypeScript pour une API de recherche en lot, exposant des opérations de fuzzy search, jointures de tables et agrégations.
+Mise en place de la structure du package, gestion des types stricts (TypeScript), tests unitaires et pipeline CI/CD pour automatiser les vérifications à chaque commit.
+Le client est consommé par d'autres modules de l'écosystème Fondation.io et fait partie du patrimoine logiciel partagé de l'équipe.
+Travail en mode projet avec spécifications techniques, suivi de tickets et revues de code régulières.`,
+        tags: ["TypeScript", "API", "Tests", "CI/CD", "Fuzzy search"],
+        image: "assets/img/projets/placeholder-fastdb.jpg",
+        gallery: [],
+        features: [
+            "Recherche fuzzy et jointures côté client",
+            "TypeScript strict avec types exposés",
+            "Suite de tests unitaires automatisée",
+            "Pipeline CI/CD intégrée"
+        ],
+        github: "",
+        competences: [
+            "Gérer le patrimoine informatique",
+            "Répondre aux incidents et aux demandes d'évolution",
+            "Travailler en mode projet",
+            "Mettre à disposition des utilisateurs un service informatique"
+        ],
+        equipe: ["Équipe Fondation.io"],
+        periode: "01/11/25 au 31/01/26",
+        codeExamples: []
+    },
+    {
+        id: 203,
+        title: "Fondation.io — Codex (fork openai/codex)",
+        description: "Agent de code IA en terminal — contribution open source.",
+        longDescription: `Travail sur un fork de openai/codex, un agent de code IA qui s'exécute directement dans le terminal de l'utilisateur.
+Contributions à la base de code open source (corrections, améliorations, intégrations) et adaptations spécifiques à l'écosystème Fondation.io.
+L'agent permet aux développeurs d'interagir avec un assistant IA pour générer, modifier, refactorer du code en restant dans leur environnement habituel.
+Travail réalisé en mode projet sur sprints, avec gestion des dépendances upstream et synchronisation régulière avec le repo officiel OpenAI.`,
+        tags: ["Open Source", "IA", "CLI", "TypeScript", "Agent"],
+        image: "assets/img/projets/placeholder-codex.jpg",
+        gallery: [],
+        features: [
+            "Agent IA en terminal",
+            "Contributions open source upstream",
+            "Synchronisation avec le repo officiel openai/codex",
+            "Adaptations métier Fondation.io"
+        ],
+        github: "https://github.com/Fondation-io/Codex",
+        competences: [
+            "Gérer le patrimoine informatique",
+            "Travailler en mode projet",
+            "Mettre à disposition des utilisateurs un service informatique"
+        ],
+        equipe: ["Équipe Fondation.io"],
+        periode: "01/02/26 au 31/03/26",
+        codeExamples: []
+    }
+];
 
 export const formation = {
     ecole: "Lycée Louis Bascan — Rambouillet",

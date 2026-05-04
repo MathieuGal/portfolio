@@ -1,4 +1,4 @@
-import { personalInfo, skills, projects, personalProjects, veille, epreuves, formation } from './data.js';
+import { personalInfo, skills, projects, personalProjects, projetsPro, veille, epreuves, formation } from './data.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     loadPersonalInfo();
@@ -51,9 +51,15 @@ function loadSkills() {
 
 function loadProjects() {
     const projectsContainer = document.getElementById('projects-container');
-    if (!projectsContainer) return;
+    if (projectsContainer) {
+        projectsContainer.innerHTML = projects.map(project => createProjectCard(project)).join('');
+    }
 
-    projectsContainer.innerHTML = projects.map(project => createProjectCard(project)).join('');
+    // Section dédiée aux réalisations en milieu professionnel (alternance)
+    const proContainer = document.getElementById('pro-projects-container');
+    if (proContainer && typeof projetsPro !== 'undefined') {
+        proContainer.innerHTML = projetsPro.map(project => createProjectCard(project)).join('');
+    }
 }
 
 function loadPersonalProjects() {
@@ -71,12 +77,16 @@ function loadEpreuves() {
 }
 
 function createProjectCard(project) {
+    const privateBadge = (!project.github || project.github === '')
+        ? `<span style="display:inline-block; background:#fff3cd; color:#856404; padding:0.25rem 0.6rem; border-radius:999px; font-size:0.8rem; border:1px solid #ffeeba; margin-bottom:0.75rem;"><i class="fas fa-lock" style="margin-right:5px;"></i>Repo privé entreprise</span>`
+        : '';
     return `
         <div class="card">
             <div style="height: 200px; background: #e5e7eb; border-radius: 0.5rem; margin-bottom: 1rem; overflow: hidden;">
                 <img src="${project.image}" alt="${project.title}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Projet'">
             </div>
             <h3>${project.title}</h3>
+            ${privateBadge}
             <p style="color: var(--text-muted); margin: 0.5rem 0;">${project.description}</p>
             <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
                 ${project.tags.map(tag => `<span style="background: var(--bg-color); color: var(--primary-color); padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.875rem; border: 1px solid var(--primary-color);">${tag}</span>`).join('')}
@@ -91,7 +101,7 @@ function loadProjectDetails() {
     const projectId = parseInt(urlParams.get('id'));
 
     // Search in all project lists
-    const allProjects = [...projects, ...personalProjects, ...(veille.projets || []), ...(epreuves.e4 || [])];
+    const allProjects = [...projects, ...personalProjects, ...(typeof projetsPro !== 'undefined' ? projetsPro : []), ...(veille.projets || []), ...(epreuves.e4 || [])];
     const project = allProjects.find(p => p.id === projectId);
 
     if (!project) return;
@@ -131,7 +141,18 @@ function loadProjectDetails() {
 
     // Set GitHub Link
     const githubLink = document.getElementById('project-github');
-    if (githubLink) githubLink.href = project.github;
+    if (githubLink) {
+        if (project.github && project.github !== '') {
+            githubLink.href = project.github;
+            githubLink.style.display = '';
+            githubLink.innerHTML = '<i class="fab fa-github" style="margin-right:8px;"></i> Voir sur GitHub';
+        } else {
+            githubLink.removeAttribute('href');
+            githubLink.style.cursor = 'not-allowed';
+            githubLink.style.opacity = '0.65';
+            githubLink.innerHTML = '<i class="fas fa-lock" style="margin-right:8px;"></i> Repo privé (entreprise)';
+        }
+    }
 
     // Set Gallery
     const galleryContainer = document.getElementById('project-gallery');
