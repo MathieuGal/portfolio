@@ -326,51 +326,6 @@ Ce projet apporte une solution technique optimisée aux problématiques de récu
 export const epreuves = {
     e4: [
         {
-            id: 101,
-            title: "Projet Bourse",
-            description: "Application de gestion et simulation boursière.",
-            longDescription: `Ce projet Bourse est une application web métier, programmée en PHP natif selon l'architecture logicielle standard Modèle-Vue-Contrôleur (MVC).
-Le fonctionnement débute au niveau des contrôleurs, qui interceptent les requêtes des utilisateurs, telles que l'ajout ou la vente d'une action.
-Les modèles entrent ensuite en jeu pour interroger la base de données relationnelle MySQL (via PDO) ou consommer les API financières externes.
-Lorsque qu'un actif est affiché sur le tableau de bord, une synchronisation en temps réel s'opère pour récupérer dynamiquement son cours boursier actuel.
-Afin de ne pas dépasser les quotas stricts des API externes, le système met en cache les cotations pendant quelques minutes avant d'exiger un rafraîchissement.
-Un moteur de calcul interne traduit instantanément les fluctuations de prix en plus-values ou moins-values exprimées en pourcentages.
-Toutes les interactions au sein de l'application sont protégées par des mécanismes de sécurité comme le hachage des mots de passe ou les requêtes préparées.
-Côté interface utilisateur, la vue récupère les données calculées et génère dynamiquement des graphiques de la répartition des actifs.
-Cette gestion centralisée offre aux utilisateurs un environnement complet pour suivre et optimiser virtuellement leurs stratégies d'investissement.`,
-            tags: ["PHP", "MVC", "MySQL", "API REST", "Finance"],
-            image: "assets/img/projets/placeholder-bourse.jpg",
-            gallery: [],
-            features: [
-                "Suivi des cours en temps réel via API",
-                "Gestion de portefeuille virtuel",
-                "Calcul automatique des gains/pertes",
-                "Graphiques d'évolution des actifs"
-            ],
-            github: "https://github.com/MathieuGal/Projet-Bourse",
-            competences: ["Concevoir et développer une solution applicative", "Gérer les données"],
-            equipe: ["Mathieu Gallienne", "Amory Danvy"],
-            codeExamples: [
-                {
-                    title: "Appel API et mise en cache du cours",
-                    language: "php",
-                    code: `public function getStockPrice($symbol) {
-    if ($this->cache->has($symbol)) {
-        return $this->cache->get($symbol);
-    }
-
-    // Appel API externe si absent du cache
-    $response = file_get_contents("https://api.finnhub.io/api/v1/quote?symbol=$symbol");
-    $price = json_decode($response)->c;
-
-    // Mise en cache pour soulager l'API
-    $this->cache->set($symbol, $price, 300);
-    return $price;
-}`
-                }
-            ]
-        },
-        {
             id: 102,
             title: "ArtisanConnect",
             description: "Mise en relation entre artisans et clients.",
@@ -384,8 +339,12 @@ La logique de validation des formulaires back-end effectue un nettoyage prévent
 Les catégories de services sont dynamiquement instanciées depuis MySQL, assurant qu'un artisan puisse toujours choisir une spécialité mise à jour.
 Ce projet met particulièrement l'accent sur les flux de communication multi-utilisateurs et le maintien de la consistance des données hébergées.`,
             tags: ["PHP", "MySQL", "CSS", "Responsive"],
-            image: "assets/img/projets/placeholder-artisans.jpg",
-            gallery: [],
+            image: "js/Image/artisanconnect-1.png",
+            gallery: [
+                "js/Image/artisanconnect-1.png",
+                "js/Image/artisanconnect-2.png",
+                "js/Image/artisanconnect-3.png"
+            ],
             features: [
                 "Annuaire des artisans par catégorie",
                 "Système de prise de rendez-vous",
